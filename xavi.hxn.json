@@ -1,0 +1,1680 @@
+{
+  "hxn": 1,
+  "library": "xavi",
+  "package": "media",
+  "enums": [
+    {
+      "name": "AudioSampleFormat",
+      "variants": [{ "name": "U8", "value": 0 }, { "name": "S16", "value": 1 }, { "name": "S32", "value": 2 }, { "name": "F32", "value": 3 }, { "name": "U8Planar", "value": 4 }, { "name": "S16Planar", "value": 5 }, { "name": "S32Planar", "value": 6 }, { "name": "F32Planar", "value": 7 }]
+    },
+    {
+      "name": "VideoPixelFormat",
+      "variants": [{ "name": "I420", "value": 0 }, { "name": "I420A", "value": 1 }, { "name": "I422", "value": 2 }, { "name": "I444", "value": 3 }, { "name": "NV12", "value": 4 }, { "name": "RGBA", "value": 5 }, { "name": "RGBX", "value": 6 }, { "name": "BGRA", "value": 7 }, { "name": "BGRX", "value": 8 }]
+    },
+    {
+      "name": "EncodedChunkType",
+      "variants": [{ "name": "Key", "value": 0 }, { "name": "Delta", "value": 1 }]
+    },
+    {
+      "name": "VideoColorPrimaries",
+      "variants": [{ "name": "Bt709", "value": 0 }, { "name": "Bt470bg", "value": 1 }, { "name": "Smpte170m", "value": 2 }, { "name": "Bt2020", "value": 3 }, { "name": "Smpte432", "value": 4 }]
+    },
+    {
+      "name": "VideoTransferCharacteristics",
+      "variants": [{ "name": "Bt709", "value": 0 }, { "name": "Smpte170m", "value": 1 }, { "name": "Iec6196621", "value": 2 }, { "name": "Linear", "value": 3 }, { "name": "Pq", "value": 4 }, { "name": "Hlg", "value": 5 }]
+    },
+    {
+      "name": "VideoMatrixCoefficients",
+      "variants": [{ "name": "Rgb", "value": 0 }, { "name": "Bt709", "value": 1 }, { "name": "Bt470bg", "value": 2 }, { "name": "Smpte170m", "value": 3 }, { "name": "Bt2020Ncl", "value": 4 }]
+    },
+    {
+      "name": "PlaybackState",
+      "variants": [{ "name": "Opening", "value": 0 }, { "name": "Paused", "value": 1 }, { "name": "Playing", "value": 2 }, { "name": "Buffering", "value": 3 }, { "name": "Ended", "value": 4 }]
+    },
+    {
+      "name": "StreamReadStatus",
+      "variants": [{ "name": "Pending", "value": 0 }, { "name": "Ready", "value": 1 }, { "name": "Ended", "value": 2 }]
+    },
+    {
+      "name": "MediaPayloadKind",
+      "variants": [{ "name": "Audio", "value": 0 }, { "name": "Video", "value": 1 }, { "name": "AudioChunk", "value": 2 }, { "name": "VideoChunk", "value": 3 }, { "name": "Bytes", "value": 4 }]
+    }
+  ],
+  "tagged": [
+    {
+      "name": "OptionalDuration",
+      "cases": [
+        { "name": "Unknown", "fields": [] },
+        { "name": "Value", "fields": [{ "name": "microseconds", "type": "i64" }] }
+      ]
+    },
+    {
+      "name": "OptionalPrimaries",
+      "cases": [
+        { "name": "Unknown", "fields": [] },
+        { "name": "Value", "fields": [{ "name": "value", "type": "VideoColorPrimaries" }] }
+      ]
+    },
+    {
+      "name": "OptionalTransfer",
+      "cases": [
+        { "name": "Unknown", "fields": [] },
+        { "name": "Value", "fields": [{ "name": "value", "type": "VideoTransferCharacteristics" }] }
+      ]
+    },
+    {
+      "name": "OptionalMatrix",
+      "cases": [
+        { "name": "Unknown", "fields": [] },
+        { "name": "Value", "fields": [{ "name": "value", "type": "VideoMatrixCoefficients" }] }
+      ]
+    },
+    {
+      "name": "OptionalBool",
+      "cases": [
+        { "name": "Unknown", "fields": [] },
+        { "name": "Value", "fields": [{ "name": "value", "type": "bool" }] }
+      ]
+    },
+    {
+      "name": "ColorSpace",
+      "cases": [
+        { "name": "Value", "fields": [{ "name": "primaries", "type": "OptionalPrimaries" }, { "name": "transfer", "type": "OptionalTransfer" }, { "name": "matrix", "type": "OptionalMatrix" }, { "name": "full_range", "type": "OptionalBool" }] }
+      ]
+    },
+    {
+      "name": "PixelRect",
+      "cases": [
+        { "name": "Value", "fields": [{ "name": "x", "type": "i64" }, { "name": "y", "type": "i64" }, { "name": "width", "type": "i64" }, { "name": "height", "type": "i64" }] }
+      ]
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "AudioDataInit",
+      "methods": [
+        {
+          "name": "new",
+          "kind": "constructor",
+          "params": [{ "name": "format", "type": "AudioSampleFormat" }, { "name": "sample_rate", "type": "f32" }, { "name": "number_of_frames", "type": "i64" }, { "name": "number_of_channels", "type": "i64" }, { "name": "timestamp", "type": "i64" }, { "name": "data", "type": "bytes" }],
+          "returns": "AudioDataInit",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "AudioDataCopyToOptions",
+      "methods": [
+        {
+          "name": "frame_offset",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "i64" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "frame_count",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "i64" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "format",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "AudioSampleFormat" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "new",
+          "kind": "constructor",
+          "params": [{ "name": "plane_index", "type": "i64" }],
+          "returns": "AudioDataCopyToOptions",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "DOMRectInit",
+      "methods": [
+        {
+          "name": "x",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "f64" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "y",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "f64" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "width",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "f64" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "height",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "f64" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "new",
+          "kind": "constructor",
+          "params": [],
+          "returns": "DOMRectInit",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "PlaneLayout",
+      "methods": [
+        {
+          "name": "new",
+          "kind": "constructor",
+          "params": [{ "name": "offset", "type": "i64" }, { "name": "stride", "type": "i64" }],
+          "returns": "PlaneLayout",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "VideoColorSpaceInit",
+      "methods": [
+        {
+          "name": "primaries",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "VideoColorPrimaries" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "transfer",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "VideoTransferCharacteristics" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "matrix",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "VideoMatrixCoefficients" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "full_range",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "bool" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "new",
+          "kind": "constructor",
+          "params": [],
+          "returns": "VideoColorSpaceInit",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "VideoFrameBufferInit",
+      "methods": [
+        {
+          "name": "duration",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "i64" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "add_layout",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "PlaneLayout" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "visible_rect",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "DOMRectInit" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "display_width",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "i64" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "display_height",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "i64" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "color_space",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "VideoColorSpaceInit" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "new",
+          "kind": "constructor",
+          "params": [{ "name": "format", "type": "VideoPixelFormat" }, { "name": "coded_width", "type": "i64" }, { "name": "coded_height", "type": "i64" }, { "name": "timestamp", "type": "i64" }],
+          "returns": "VideoFrameBufferInit",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "VideoFrameCopyToOptions",
+      "methods": [
+        {
+          "name": "rect",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "DOMRectInit" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "add_layout",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "PlaneLayout" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "format",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "VideoPixelFormat" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "new",
+          "kind": "constructor",
+          "params": [],
+          "returns": "VideoFrameCopyToOptions",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "EncodedAudioChunkInit",
+      "methods": [
+        {
+          "name": "duration",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "i64" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "new",
+          "kind": "constructor",
+          "params": [{ "name": "type_", "type": "EncodedChunkType" }, { "name": "timestamp", "type": "i64" }, { "name": "data", "type": "bytes" }],
+          "returns": "EncodedAudioChunkInit",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "EncodedVideoChunkInit",
+      "methods": [
+        {
+          "name": "duration",
+          "kind": "mutating",
+          "params": [{ "name": "value", "type": "i64" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "new",
+          "kind": "constructor",
+          "params": [{ "name": "type_", "type": "EncodedChunkType" }, { "name": "timestamp", "type": "i64" }, { "name": "data", "type": "bytes" }],
+          "returns": "EncodedVideoChunkInit",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "AudioData",
+      "methods": [
+        {
+          "name": "slice",
+          "kind": "method",
+          "params": [{ "name": "offset", "type": "i64" }, { "name": "count", "type": "i64" }, { "name": "timestamp", "type": "i64" }],
+          "returns": "AudioData",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "retime",
+          "kind": "method",
+          "params": [{ "name": "timestamp", "type": "i64" }],
+          "returns": "AudioData",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "gain",
+          "kind": "method",
+          "params": [{ "name": "gain", "type": "f64" }],
+          "returns": "AudioData",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "mix",
+          "kind": "method",
+          "params": [{ "name": "other", "type": "AudioData" }, { "name": "gain", "type": "f64" }],
+          "returns": "AudioData",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "create",
+          "kind": "static",
+          "params": [{ "name": "init", "type": "AudioDataInit" }],
+          "returns": "AudioData",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "format",
+          "kind": "method",
+          "params": [],
+          "returns": "AudioSampleFormat",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "sample_rate",
+          "kind": "method",
+          "params": [],
+          "returns": "f32",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "number_of_frames",
+          "kind": "method",
+          "params": [],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "number_of_channels",
+          "kind": "method",
+          "params": [],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "timestamp",
+          "kind": "method",
+          "params": [],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "duration",
+          "kind": "method",
+          "params": [],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "allocation_size",
+          "kind": "method",
+          "params": [{ "name": "options", "type": "AudioDataCopyToOptions" }],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "copy_to",
+          "kind": "method",
+          "params": [{ "name": "destination", "type": "bytes_mut" }, { "name": "options", "type": "AudioDataCopyToOptions" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "clone",
+          "kind": "method",
+          "params": [],
+          "returns": "AudioData",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "close",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "AudioEqualizer",
+      "methods": [
+        {
+          "name": "create",
+          "kind": "static",
+          "params": [{ "name": "bands", "type": "i32" }],
+          "returns": "AudioEqualizer",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "band_count",
+          "kind": "method",
+          "params": [],
+          "returns": "i32",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "set_band",
+          "kind": "method",
+          "params": [{ "name": "index", "type": "i32" }, { "name": "frequency", "type": "f64" }, { "name": "gain_db", "type": "f64" }, { "name": "q", "type": "f64" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "disable_band",
+          "kind": "method",
+          "params": [{ "name": "index", "type": "i32" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "band_frequency",
+          "kind": "method",
+          "params": [{ "name": "index", "type": "i32" }],
+          "returns": "f64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "band_gain",
+          "kind": "method",
+          "params": [{ "name": "index", "type": "i32" }],
+          "returns": "f64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "band_q",
+          "kind": "method",
+          "params": [{ "name": "index", "type": "i32" }],
+          "returns": "f64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "band_enabled",
+          "kind": "method",
+          "params": [{ "name": "index", "type": "i32" }],
+          "returns": "bool",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "set_preamp",
+          "kind": "method",
+          "params": [{ "name": "gain_db", "type": "f64" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "preamp",
+          "kind": "method",
+          "params": [],
+          "returns": "f64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "set_bypass",
+          "kind": "method",
+          "params": [{ "name": "bypass", "type": "bool" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "bypassed",
+          "kind": "method",
+          "params": [],
+          "returns": "bool",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "process",
+          "kind": "method",
+          "params": [{ "name": "data", "type": "AudioData" }],
+          "returns": "AudioData",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "reset",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "close",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "VideoFrame",
+      "methods": [
+        {
+          "name": "retime",
+          "kind": "method",
+          "params": [{ "name": "timestamp", "type": "i64" }, { "name": "duration", "type": "i64" }],
+          "returns": "VideoFrame",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "crop",
+          "kind": "method",
+          "params": [{ "name": "x", "type": "i64" }, { "name": "y", "type": "i64" }, { "name": "width", "type": "i64" }, { "name": "height", "type": "i64" }],
+          "returns": "VideoFrame",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "resize",
+          "kind": "method",
+          "params": [{ "name": "width", "type": "i64" }, { "name": "height", "type": "i64" }],
+          "returns": "VideoFrame",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "blend",
+          "kind": "method",
+          "params": [{ "name": "other", "type": "VideoFrame" }, { "name": "opacity", "type": "f64" }],
+          "returns": "VideoFrame",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "create",
+          "kind": "static",
+          "params": [{ "name": "data", "type": "bytes" }, { "name": "init", "type": "VideoFrameBufferInit" }],
+          "returns": "VideoFrame",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "format",
+          "kind": "method",
+          "params": [],
+          "returns": "VideoPixelFormat",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "coded_width",
+          "kind": "method",
+          "params": [],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "coded_height",
+          "kind": "method",
+          "params": [],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "display_width",
+          "kind": "method",
+          "params": [],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "display_height",
+          "kind": "method",
+          "params": [],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "visible_rect",
+          "kind": "method",
+          "params": [],
+          "returns": "PixelRect",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "color_space",
+          "kind": "method",
+          "params": [],
+          "returns": "ColorSpace",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "timestamp",
+          "kind": "method",
+          "params": [],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "duration",
+          "kind": "method",
+          "params": [],
+          "returns": "OptionalDuration",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "allocation_size",
+          "kind": "method",
+          "params": [{ "name": "options", "type": "VideoFrameCopyToOptions" }],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "copy_to",
+          "kind": "method",
+          "params": [{ "name": "destination", "type": "bytes_mut" }, { "name": "options", "type": "VideoFrameCopyToOptions" }],
+          "returns": "future<PlaneLayouts>",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "clone",
+          "kind": "method",
+          "params": [],
+          "returns": "VideoFrame",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "close",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "PlaneLayouts",
+      "docs": "Destination layouts, in pixel-format plane order. Close after reading.",
+      "methods": [
+        {
+          "name": "count",
+          "kind": "method",
+          "params": [],
+          "returns": "i32",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "offset",
+          "kind": "method",
+          "params": [{ "name": "index", "type": "i32" }],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "stride",
+          "kind": "method",
+          "params": [{ "name": "index", "type": "i32" }],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "close",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "EncodedAudioChunk",
+      "methods": [
+        {
+          "name": "create",
+          "kind": "static",
+          "params": [{ "name": "init", "type": "EncodedAudioChunkInit" }],
+          "returns": "EncodedAudioChunk",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "kind",
+          "kind": "method",
+          "params": [],
+          "returns": "EncodedChunkType",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "timestamp",
+          "kind": "method",
+          "params": [],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "duration",
+          "kind": "method",
+          "params": [],
+          "returns": "OptionalDuration",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "byte_length",
+          "kind": "method",
+          "params": [],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "copy_to",
+          "kind": "method",
+          "params": [{ "name": "destination", "type": "bytes_mut" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "close",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "EncodedVideoChunk",
+      "methods": [
+        {
+          "name": "create",
+          "kind": "static",
+          "params": [{ "name": "init", "type": "EncodedVideoChunkInit" }],
+          "returns": "EncodedVideoChunk",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "kind",
+          "kind": "method",
+          "params": [],
+          "returns": "EncodedChunkType",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "timestamp",
+          "kind": "method",
+          "params": [],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "duration",
+          "kind": "method",
+          "params": [],
+          "returns": "OptionalDuration",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "byte_length",
+          "kind": "method",
+          "params": [],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "copy_to",
+          "kind": "method",
+          "params": [{ "name": "destination", "type": "bytes_mut" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "close",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "MediaPlayer",
+      "docs": "A native file player with audio output and one polled video frame.\nDrive on the main event-loop thread. Close each frame after uploading it.",
+      "methods": [
+        {
+          "name": "open",
+          "kind": "static",
+          "params": [{ "name": "path", "type": "str" }],
+          "returns": "MediaPlayer",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "state",
+          "kind": "method",
+          "params": [],
+          "returns": "PlaybackState",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "position",
+          "kind": "method",
+          "params": [],
+          "returns": "f64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "duration",
+          "kind": "method",
+          "params": [],
+          "returns": "f64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "volume",
+          "kind": "method",
+          "params": [],
+          "returns": "f64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "play",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "pause",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "seek",
+          "kind": "method",
+          "params": [{ "name": "seconds", "type": "f64" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "set_volume",
+          "kind": "method",
+          "params": [{ "name": "volume", "type": "f64" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "set_equalizer",
+          "kind": "method",
+          "params": [{ "name": "equalizer", "type": "AudioEqualizer" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "clear_equalizer",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "poll_frame",
+          "kind": "method",
+          "params": [],
+          "returns": "bool",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "take_frame",
+          "kind": "method",
+          "params": [],
+          "returns": "VideoFrame",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "close",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "CodecConfiguration",
+      "methods": [
+        {
+          "name": "audio",
+          "kind": "static",
+          "params": [{ "name": "codec", "type": "str" }, { "name": "sample_rate", "type": "i64" }, { "name": "channels", "type": "i64" }, { "name": "description", "type": "bytes" }],
+          "returns": "CodecConfiguration",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "video",
+          "kind": "static",
+          "params": [{ "name": "codec", "type": "str" }, { "name": "width", "type": "i64" }, { "name": "height", "type": "i64" }, { "name": "description", "type": "bytes" }],
+          "returns": "CodecConfiguration",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "codec",
+          "kind": "method",
+          "params": [],
+          "returns": "str",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "sample_rate",
+          "kind": "method",
+          "params": [],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "number_of_channels",
+          "kind": "method",
+          "params": [],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "coded_width",
+          "kind": "method",
+          "params": [],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "coded_height",
+          "kind": "method",
+          "params": [],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "description_size",
+          "kind": "method",
+          "params": [],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "copy_description",
+          "kind": "method",
+          "params": [{ "name": "destination", "type": "bytes_mut" }],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "close",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "MediaQueue",
+      "methods": [
+        {
+          "name": "create",
+          "kind": "static",
+          "params": [{ "name": "kind", "type": "MediaPayloadKind" }, { "name": "max_items", "type": "i32" }, { "name": "max_bytes", "type": "i64" }],
+          "returns": "MediaQueue",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "poll",
+          "kind": "method",
+          "params": [],
+          "returns": "StreamReadStatus",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "finish",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "close",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "write_audio",
+          "kind": "method",
+          "params": [{ "name": "value", "type": "AudioData" }],
+          "returns": "bool",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "read_audio",
+          "kind": "method",
+          "params": [],
+          "returns": "AudioData",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "write_video",
+          "kind": "method",
+          "params": [{ "name": "value", "type": "VideoFrame" }],
+          "returns": "bool",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "read_video",
+          "kind": "method",
+          "params": [],
+          "returns": "VideoFrame",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "write_audio_chunk",
+          "kind": "method",
+          "params": [{ "name": "value", "type": "EncodedAudioChunk" }],
+          "returns": "bool",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "read_audio_chunk",
+          "kind": "method",
+          "params": [],
+          "returns": "EncodedAudioChunk",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "write_video_chunk",
+          "kind": "method",
+          "params": [{ "name": "value", "type": "EncodedVideoChunk" }],
+          "returns": "bool",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "read_video_chunk",
+          "kind": "method",
+          "params": [],
+          "returns": "EncodedVideoChunk",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "write_bytes",
+          "kind": "method",
+          "params": [{ "name": "value", "type": "bytes" }],
+          "returns": "bool",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "byte_length",
+          "kind": "method",
+          "params": [],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "read_bytes",
+          "kind": "method",
+          "params": [{ "name": "destination", "type": "bytes_mut" }],
+          "returns": "i64",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "MediaDemuxer",
+      "methods": [
+        {
+          "name": "open",
+          "kind": "static",
+          "params": [{ "name": "path", "type": "str" }, { "name": "max_items", "type": "i32" }, { "name": "max_bytes", "type": "i64" }],
+          "returns": "MediaDemuxer",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "has_audio",
+          "kind": "method",
+          "params": [],
+          "returns": "bool",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "has_video",
+          "kind": "method",
+          "params": [],
+          "returns": "bool",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "duration",
+          "kind": "method",
+          "params": [],
+          "returns": "f64",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "close",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "get_audio_configuration",
+          "kind": "method",
+          "params": [],
+          "returns": "CodecConfiguration",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "audio_status",
+          "kind": "method",
+          "params": [],
+          "returns": "StreamReadStatus",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "read_audio_chunk",
+          "kind": "method",
+          "params": [],
+          "returns": "EncodedAudioChunk",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "get_video_configuration",
+          "kind": "method",
+          "params": [],
+          "returns": "CodecConfiguration",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "video_status",
+          "kind": "method",
+          "params": [],
+          "returns": "StreamReadStatus",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "read_video_chunk",
+          "kind": "method",
+          "params": [],
+          "returns": "EncodedVideoChunk",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "MediaMuxer",
+      "methods": [
+        {
+          "name": "audio",
+          "kind": "static",
+          "params": [{ "name": "path", "type": "str" }, { "name": "audio", "type": "CodecConfiguration" }, { "name": "origin", "type": "i64" }, { "name": "max_items", "type": "i32" }, { "name": "max_bytes", "type": "i64" }],
+          "returns": "MediaMuxer",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "video",
+          "kind": "static",
+          "params": [{ "name": "path", "type": "str" }, { "name": "video", "type": "CodecConfiguration" }, { "name": "origin", "type": "i64" }, { "name": "default_duration", "type": "i64" }, { "name": "max_items", "type": "i32" }, { "name": "max_bytes", "type": "i64" }],
+          "returns": "MediaMuxer",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "audio_video",
+          "kind": "static",
+          "params": [{ "name": "path", "type": "str" }, { "name": "audio", "type": "CodecConfiguration" }, { "name": "video", "type": "CodecConfiguration" }, { "name": "origin", "type": "i64" }, { "name": "default_duration", "type": "i64" }, { "name": "max_items", "type": "i32" }, { "name": "max_bytes", "type": "i64" }],
+          "returns": "MediaMuxer",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "finish",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "finished",
+          "kind": "method",
+          "params": [],
+          "returns": "bool",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "close",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "write_audio_chunk",
+          "kind": "method",
+          "params": [{ "name": "value", "type": "EncodedAudioChunk" }],
+          "returns": "bool",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "end_audio_track",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "write_video_chunk",
+          "kind": "method",
+          "params": [{ "name": "value", "type": "EncodedVideoChunk" }],
+          "returns": "bool",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "end_video_track",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "AudioEncoder",
+      "methods": [
+        {
+          "name": "create",
+          "kind": "static",
+          "params": [{ "name": "codec", "type": "str" }, { "name": "sample_rate", "type": "i64" }, { "name": "channels", "type": "i64" }, { "name": "bitrate", "type": "i64" }, { "name": "max_items", "type": "i32" }, { "name": "max_bytes", "type": "i64" }],
+          "returns": "AudioEncoder",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "try_encode",
+          "kind": "method",
+          "params": [{ "name": "value", "type": "AudioData" }],
+          "returns": "bool",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "poll",
+          "kind": "method",
+          "params": [],
+          "returns": "StreamReadStatus",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "read",
+          "kind": "method",
+          "params": [],
+          "returns": "EncodedAudioChunk",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "finish",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "close",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "get_configuration",
+          "kind": "method",
+          "params": [],
+          "returns": "CodecConfiguration",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "VideoEncoder",
+      "methods": [
+        {
+          "name": "create",
+          "kind": "static",
+          "params": [{ "name": "codec", "type": "str" }, { "name": "width", "type": "i64" }, { "name": "height", "type": "i64" }, { "name": "bitrate", "type": "i64" }, { "name": "framerate", "type": "f64" }, { "name": "max_items", "type": "i32" }, { "name": "max_bytes", "type": "i64" }],
+          "returns": "VideoEncoder",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "try_encode",
+          "kind": "method",
+          "params": [{ "name": "value", "type": "VideoFrame" }],
+          "returns": "bool",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "poll",
+          "kind": "method",
+          "params": [],
+          "returns": "StreamReadStatus",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "read",
+          "kind": "method",
+          "params": [],
+          "returns": "EncodedVideoChunk",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "finish",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "close",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "get_configuration",
+          "kind": "method",
+          "params": [],
+          "returns": "CodecConfiguration",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "AudioDecoder",
+      "methods": [
+        {
+          "name": "create",
+          "kind": "static",
+          "params": [{ "name": "max_items", "type": "i32" }, { "name": "max_bytes", "type": "i64" }, { "name": "configuration", "type": "CodecConfiguration" }],
+          "returns": "AudioDecoder",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "try_decode",
+          "kind": "method",
+          "params": [{ "name": "value", "type": "EncodedAudioChunk" }],
+          "returns": "bool",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "poll",
+          "kind": "method",
+          "params": [],
+          "returns": "StreamReadStatus",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "read",
+          "kind": "method",
+          "params": [],
+          "returns": "AudioData",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "finish",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "close",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "name": "VideoDecoder",
+      "methods": [
+        {
+          "name": "create",
+          "kind": "static",
+          "params": [{ "name": "max_items", "type": "i32" }, { "name": "max_bytes", "type": "i64" }, { "name": "configuration", "type": "CodecConfiguration" }],
+          "returns": "VideoDecoder",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "try_decode",
+          "kind": "method",
+          "params": [{ "name": "value", "type": "EncodedVideoChunk" }],
+          "returns": "bool",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "poll",
+          "kind": "method",
+          "params": [],
+          "returns": "StreamReadStatus",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "read",
+          "kind": "method",
+          "params": [],
+          "returns": "VideoFrame",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "finish",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        },
+        {
+          "name": "close",
+          "kind": "method",
+          "params": [],
+          "returns": "void",
+          "fallible": true,
+          "blocking": false
+        }
+      ]
+    }
+  ]
+}

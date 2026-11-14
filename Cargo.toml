@@ -1,0 +1,32 @@
+[package]
+name = "hxn-av"
+version = "0.1.0"
+edition = "2024"
+description = "Audio and video for Haxe: media data, codecs, equalizer, MP4 and file playback"
+repository = "https://github.com/hx-n/hxn-av"
+license = "Apache-2.0"
+keywords = ["audio", "video", "haxe"]
+
+[lib]
+name = "hxn_av"
+
+[package.metadata.hxn]
+# The native library is `xavi.hdll` or `libxavi.a`, and its symbols start
+# with `xavi_`.
+library = "xavi"
+haxelib = "hxn-av"
+contributors = ["darmie", "rayzor"]
+releasenote = "First release: media data, codecs, an equalizer, MP4 and file playback on HashLink, Ash, hxcpp and CPPIA."
+# The media check `hxn check` and `hxn run` build.
+haxe = "examples/check"
+
+[build-dependencies]
+x_idl = { git = "https://github.com/rayzor-blade/x-idl.git", rev = "780f07f9afde0b422fac24fc346b70dcab1516bb" }
+xavi-backend = { git = "https://github.com/rayzor-blade/xavi.git", rev = "ec2145942e70ef551bc1eef58e117e7ecdad6cb5" }
+xavi-bindgen = { git = "https://github.com/rayzor-blade/xavi.git", rev = "ec2145942e70ef551bc1eef58e117e7ecdad6cb5" }
+
+[dependencies]
+hxn = { git = "https://github.com/hx-n/hxn.git", tag = "v0.3.1" }
+hxn-future = { git = "https://github.com/hx-n/hxn.git", tag = "v0.3.1" }
+xavi-backend = { git = "https://github.com/rayzor-blade/xavi.git", rev = "ec2145942e70ef551bc1eef58e117e7ecdad6cb5" }
+xavi-core = { git = "https://github.com/rayzor-blade/xavi.git", rev = "ec2145942e70ef551bc1eef58e117e7ecdad6cb5" }
