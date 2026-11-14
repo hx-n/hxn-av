@@ -7,8 +7,8 @@
 
 Audio and video for Haxe on HashLink, Ash, hxcpp and CPPIA: video frames
 and PCM audio, an equalizer, native encoders and decoders, MP4 reading and
-writing, and a file player. The codecs are the platform's own, with no
-FFmpeg. The same program compiles for each runtime.
+writing, and a file player. The API wraps the target platform's codecs and
+does not use FFmpeg.
 
 ```haxe
 import haxe.Int64;
