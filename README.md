@@ -133,6 +133,11 @@ To build against checkouts of hxn, x-idl and xavi beside this one, put
 `[patch]` tables for their git URLs in `.cargo/config.toml`, which git
 ignores.
 
+## Agent skill
+
+[`skills/hxn-av/SKILL.md`](https://github.com/hx-n/hxn-av/blob/main/skills/hxn-av/SKILL.md) describes the library for coding
+agents. The haxelib includes it.
+
 ## License
 
 Apache-2.0. x-idl, which writes the binding, is MIT.
