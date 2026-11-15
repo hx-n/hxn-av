@@ -54,12 +54,13 @@ haxe -lib hxn-av -main Main -cpp out
 out/Main
 ```
 
-The native library is written in Rust, and the haxelib contains it prebuilt
-for Linux x86-64, macOS arm64 and Windows x86-64, beside the Haxe classes, so
-a program needs no Rust. For HashLink, the native library is copied next to
-the `.hl` output at compile time; hxcpp links it into the executable. Each
-GitHub release also has the haxelib as a ZIP, which
-`haxelib install hxn-av-<version>.zip` installs.
+The native library is written in Rust. Beside the Haxe classes, the haxelib
+contains it prebuilt for Linux x86-64 and ARM64, macOS arm64 and Windows
+x86-64, and as static libraries for Intel macOS (hxcpp only), iOS, the iOS
+simulator and Android arm64, so a program needs no Rust. For HashLink, the
+native library is copied next to the `.hl` output at compile time; hxcpp
+links it into the executable. Each GitHub release also has the haxelib as a
+ZIP, which `haxelib install hxn-av-<version>.zip` installs.
 
 The Haxe classes are also committed to this repository, so the API can be
 read here, but the native libraries are only in releases. A `haxelib git`
@@ -67,7 +68,9 @@ install has no native libraries: copy the `native/` directory from a
 release's ZIP into it before compiling.
 
 CI runs each runtime on Linux, macOS and Windows, except HashLink, which runs
-on Linux and Windows. Android, iOS and wasm builds are not set up yet.
+on Linux and Windows. The release builds the iOS and Android libraries, and
+CI does not run them; wasm is not set up yet. On a mobile device, hxcpp links
+the static library into the program, and so does Ash for a HashLink program.
 
 ## Classes
 
