@@ -1,11 +1,11 @@
 {
   "name": "hxn-av",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Audio and video for Haxe: media data, codecs, equalizer, MP4 and file playback",
   "url": "https://github.com/hx-n/hxn-av",
   "license": "Apache",
   "tags": ["audio", "video", "haxe", "media", "mp4", "playback", "equalizer", "codec", "hashlink", "ash", "hxcpp", "cppia", "native"],
   "contributors": ["darmie", "rayzor"],
-  "releasenote": "Prebuilt native libraries for Linux ARM64, Intel macOS (hxcpp), iOS, the iOS simulator and Android arm64, beside Linux x86-64, macOS arm64 and Windows x86-64; an agent skill under skills/.",
-  "dependencies": { "hxn": "0.3.1" }
+  "releasenote": "Depends on hxn 0.3.2, as the GPU drivers do, so one program can use them together.",
+  "dependencies": { "hxn": "0.3.2" }
 }
