@@ -14,7 +14,7 @@ FFmpeg.
 ```haxe
 import haxe.Int64;
 import haxe.io.Bytes;
-import media.*;
+import hxn.av.*;
 
 class Main {
 	static function main() {
@@ -74,7 +74,7 @@ the static library into the program, and so does Ash for a HashLink program.
 
 ## Classes
 
-All in the package `media`:
+All in the package `hxn.av`:
 
 | Class | |
 |---|---|

@@ -1,11 +1,11 @@
 {
   "name": "hxn-av",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Audio and video for Haxe: media data, codecs, equalizer, MP4 and file playback",
   "url": "https://github.com/hx-n/hxn-av",
   "license": "Apache",
   "tags": ["audio", "video", "haxe", "media", "mp4", "playback", "equalizer", "codec", "hashlink", "ash", "hxcpp", "cppia", "native"],
   "contributors": ["darmie", "rayzor"],
-  "releasenote": "Depends on hxn 0.3.2, as the GPU drivers do, so one program can use them together.",
-  "dependencies": { "hxn": "0.3.2" }
+  "releasenote": "Moves to the hxn.av package, on hxn 0.3.5.",
+  "dependencies": { "hxn": "0.3.5" }
 }

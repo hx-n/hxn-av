@@ -1,6 +1,6 @@
 [package]
 name = "hxn-av"
-version = "0.1.2"
+version = "0.2.0"
 edition = "2024"
 description = "Audio and video for Haxe: media data, codecs, equalizer, MP4 and file playback"
 repository = "https://github.com/hx-n/hxn-av"
@@ -16,7 +16,7 @@ name = "hxn_av"
 library = "xavi"
 haxelib = "hxn-av"
 contributors = ["darmie", "rayzor"]
-releasenote = "Depends on hxn 0.3.2, as the GPU drivers do, so one program can use them together."
+releasenote = "Moves to the hxn.av package, on hxn 0.3.5."
 # The media check `hxn check` and `hxn run` build.
 haxe = "examples/check"
 
@@ -26,7 +26,7 @@ xavi-backend = { git = "https://github.com/rayzor-blade/xavi.git", rev = "ec2145
 xavi-bindgen = { git = "https://github.com/rayzor-blade/xavi.git", rev = "ec2145942e70ef551bc1eef58e117e7ecdad6cb5" }
 
 [dependencies]
-hxn = { git = "https://github.com/hx-n/hxn.git", tag = "v0.3.2" }
-hxn-future = { git = "https://github.com/hx-n/hxn.git", tag = "v0.3.2" }
+hxn = { git = "https://github.com/hx-n/hxn.git", tag = "v0.3.5" }
+hxn-future = { git = "https://github.com/hx-n/hxn.git", tag = "v0.3.5" }
 xavi-backend = { git = "https://github.com/rayzor-blade/xavi.git", rev = "ec2145942e70ef551bc1eef58e117e7ecdad6cb5" }
 xavi-core = { git = "https://github.com/rayzor-blade/xavi.git", rev = "ec2145942e70ef551bc1eef58e117e7ecdad6cb5" }

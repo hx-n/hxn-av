@@ -7,7 +7,7 @@ fn main() {
     xavi_backend::install_scoped(&out, "crate::model").expect("installing the xavi backend");
     let binding = x_idl::hxn::generate(
         xavi_bindgen::NAMESPACE,
-        "media",
+        "hxn.av",
         xavi_bindgen::MEDIA_API,
         &xavi_bindgen::browser_idl(),
     )
