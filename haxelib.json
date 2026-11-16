@@ -4,7 +4,7 @@
   "description": "Audio and video for Haxe: media data, codecs, equalizer, MP4 and file playback",
   "url": "https://github.com/hx-n/hxn-av",
   "license": "Apache",
-  "tags": ["audio", "video", "haxe", "media", "mp4", "playback", "equalizer", "codec", "hashlink", "ash", "hxcpp", "cppia", "native"],
+  "tags": ["audio", "video", "haxe", "media", "mp4", "playback", "equalizer", "codec", "hashlink", "ash", "hxcpp", "cppia", "native", "cross", "wasm"],
   "contributors": ["darmie", "rayzor"],
   "releasenote": "Moves to the hxn.av package, on hxn 0.3.5.",
   "dependencies": { "hxn": "0.3.5" }

@@ -5,7 +5,7 @@ edition = "2024"
 description = "Audio and video for Haxe: media data, codecs, equalizer, MP4 and file playback"
 repository = "https://github.com/hx-n/hxn-av"
 license = "Apache-2.0"
-keywords = ["audio", "video", "haxe", "media", "mp4", "playback", "equalizer", "codec", "hashlink", "ash", "hxcpp", "cppia", "native"]
+keywords = ["audio", "video", "haxe", "media", "mp4", "playback", "equalizer", "codec", "hashlink", "ash", "hxcpp", "cppia", "native", "cross", "wasm"]
 
 [lib]
 name = "hxn_av"
