@@ -16,17 +16,28 @@ name = "hxn_av"
 library = "xavi"
 haxelib = "hxn-av"
 contributors = ["darmie", "rayzor"]
-releasenote = "Moves to the hxn.av package, on hxn 0.3.5."
+releasenote = "Browser PCM operations and bounded AAC-LC decoding on Ash wasm and both hxcpp wasm modes."
 # The media check `hxn check` and `hxn run` build.
 haxe = "examples/check"
+init = ["hxn.av.Init.register()"]
+
+[package.metadata.hxn.link-args]
+wasm32-unknown-emscripten = ["-sSTACK_SIZE=1048576"]
+wasm32-unknown-emscripten-threads = ["-sDEFAULT_PTHREAD_STACK_SIZE=1048576"]
 
 [build-dependencies]
-x_idl = { git = "https://github.com/rayzor-blade/x-idl.git", rev = "780f07f9afde0b422fac24fc346b70dcab1516bb" }
+cc = "1"
+quote = "1"
+syn = { version = "2", features = ["full"] }
+x_idl = { git = "https://github.com/rayzor-blade/x-idl.git", rev = "1055cfd7e4925ebc7028175051dafb67d0b9dbe1" }
 xavi-backend = { git = "https://github.com/rayzor-blade/xavi.git", rev = "ec2145942e70ef551bc1eef58e117e7ecdad6cb5" }
 xavi-bindgen = { git = "https://github.com/rayzor-blade/xavi.git", rev = "ec2145942e70ef551bc1eef58e117e7ecdad6cb5" }
 
 [dependencies]
-hxn = { git = "https://github.com/hx-n/hxn.git", tag = "v0.3.5" }
-hxn-future = { git = "https://github.com/hx-n/hxn.git", tag = "v0.3.5" }
+hxn = { git = "https://github.com/hx-n/hxn.git", tag = "v0.3.7" }
+hxn-future = { git = "https://github.com/hx-n/hxn.git", tag = "v0.3.7" }
 xavi-backend = { git = "https://github.com/rayzor-blade/xavi.git", rev = "ec2145942e70ef551bc1eef58e117e7ecdad6cb5" }
 xavi-core = { git = "https://github.com/rayzor-blade/xavi.git", rev = "ec2145942e70ef551bc1eef58e117e7ecdad6cb5" }
+
+[target.'cfg(target_family = "wasm")'.dependencies]
+serde_json = "1"

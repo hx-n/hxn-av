@@ -1,1 +1,2 @@
 --macro hxn.Bind.lib("xavi")
+--macro hxn.av.Init.register()

@@ -54,8 +54,7 @@ haxe -lib hxn-av -main Main -cpp out
 out/Main
 ```
 
-The native library is written in Rust. Beside the Haxe classes, the haxelib
-contains it prebuilt for Linux x86-64 and ARM64, macOS arm64 and Windows
+Beside the Haxe classes, the haxelib contains prebuilt libraries for Linux x86-64 and ARM64, macOS arm64 and Windows
 x86-64, and as static libraries for Intel macOS (hxcpp only), iOS, the iOS
 simulator and Android arm64, so a program needs no Rust. For HashLink, the
 native library is copied next to the `.hl` output at compile time; hxcpp
@@ -69,8 +68,32 @@ release's ZIP into it before compiling.
 
 CI runs each runtime on Linux, macOS and Windows, except HashLink, which runs
 on Linux and Windows. The release builds the iOS and Android libraries, and
-CI does not run them; wasm is not set up yet. On a mobile device, hxcpp links
+CI does not run them. Browser CI covers Ash wasm and threaded/unthreaded
+hxcpp. On a mobile device, hxcpp links
 the static library into the program, and so does Ash for a HashLink program.
+
+## Browser audio
+
+Build with `hxn package hl --wasm --threads` for Ash or
+`hxn package cpp --wasm` for hxcpp; add `--threads` for threaded hxcpp.
+The package ships its page agent and installs it for direct `haxe -lib`
+builds too. HashLink programs use Ash's wasm build and serve tooling.
+
+PCM, video-frame CPU operations, equalizers, configurations, encoded chunks
+and bounded media queues reuse the native API. `AudioDecoder` uses the
+browser's WebCodecs AAC-LC decoder (`mp4a.40.2` or `aac`), with mono/stereo
+at 8–96 kHz. WebCodecs must be available in a secure browser context.
+Decoder creation takes 1–128 items and a 16 KiB–16 MiB byte limit;
+`tryDecode` returns false while input/output credit is exhausted. Retain and
+retry that chunk on a later event-loop tick. Read and close ready blocks,
+then call `finish` and drain until `Ended`. Codec errors are raised by the
+next operation; closing discards queued data and closes the page decoder.
+
+Do not block the browser page waiting for output. Use `VideoFrame.copyTo`
+with `then` on unthreaded hxcpp, and drive decoder polling from the event
+loop. Decoded PCM can feed hxn-audio's bounded output stream through its
+`DecoderStream` helper. MP4 file access, file playback, video decoding and
+encoding remain unavailable in this browser binding.
 
 ## Classes
 
@@ -117,6 +140,11 @@ first, then generates each runtime's adapter and one set of Haxe classes,
 shared by every runtime, from that binding. Changing the API means changing
 xavi's declaration and updating the xavi revision this repository's
 `Cargo.toml` pins.
+
+## Contributor guides
+
+Read [design](docs/design.md), [conventions](docs/conventions.md) and the
+[skill](skills/hxn-av/SKILL.md) before changing the binding.
 
 ## Building from source
 

@@ -34,6 +34,9 @@ jobs:
           - { os: macos-latest,  name: ios,           runtimes: hl cpp, target: aarch64-apple-ios }
           - { os: macos-latest,  name: ios-simulator, runtimes: hl cpp, target: aarch64-apple-ios-sim }
           - { os: ubuntu-latest, name: android,       runtimes: hl cpp, target: aarch64-linux-android }
+          - { os: ubuntu-latest, name: ash-wasm-threads, runtimes: hl, wasm: true, threads: true }
+          - { os: ubuntu-latest, name: emcc-wasm, runtimes: cpp, wasm: true, emcc: true }
+          - { os: ubuntu-latest, name: emcc-wasm-threads, runtimes: cpp, wasm: true, threads: true, emcc: true }
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
@@ -41,7 +44,17 @@ jobs:
           runtime: package
       - if: matrix.target
         run: rustup target add ${{ matrix.target }}
-      - run: hxn package ${{ matrix.runtimes || 'hl cpp' }} --release ${{ matrix.target && format('--target {0}', matrix.target) || '' }} --out package
+      - if: matrix.wasm
+        run: rustup component add rust-src
+      - if: matrix.emcc
+        run: |
+          rustup target add wasm32-unknown-emscripten
+          git clone --depth 1 https://github.com/emscripten-core/emsdk "$RUNNER_TEMP/emsdk"
+          "$RUNNER_TEMP/emsdk/emsdk" install 5.0.7
+          "$RUNNER_TEMP/emsdk/emsdk" activate 5.0.7
+      - run: |
+          if [ -f "$RUNNER_TEMP/emsdk/emsdk_env.sh" ]; then source "$RUNNER_TEMP/emsdk/emsdk_env.sh"; fi
+          hxn package ${{ matrix.runtimes || 'hl cpp' }} --release ${{ matrix.target && format('--target {0}', matrix.target) || '' }} ${{ matrix.wasm && '--wasm' || '' }} ${{ matrix.threads && '--threads' || '' }} --out package
       - uses: actions/upload-artifact@v4
         with:
           name: package-${{ matrix.name }}

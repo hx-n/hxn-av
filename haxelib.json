@@ -6,6 +6,6 @@
   "license": "Apache",
   "tags": ["audio", "video", "haxe", "media", "mp4", "playback", "equalizer", "codec", "hashlink", "ash", "hxcpp", "cppia", "native", "cross", "wasm"],
   "contributors": ["darmie", "rayzor"],
-  "releasenote": "Moves to the hxn.av package, on hxn 0.3.5.",
-  "dependencies": { "hxn": "0.3.5" }
+  "releasenote": "Browser PCM operations and bounded AAC-LC decoding on Ash wasm and both hxcpp wasm modes.",
+  "dependencies": { "hxn": "0.3.7" }
 }

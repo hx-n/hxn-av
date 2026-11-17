@@ -8,6 +8,9 @@ import hxn.av.*;
 	`hxn check` runs it on each runtime: it exits with 1 on a failed check, and
 	every runtime must print the same output.
 **/
+#if emscripten
+@:cppFileCode("#include <emscripten.h>\n#include <emscripten/eventloop.h>")
+#end
 class Main {
 	static function check(holds:Bool, what:String) {
 		Sys.println('$what: ${holds ? "yes" : "no"}');
@@ -16,6 +19,9 @@ class Main {
 	}
 
 	static function main() {
+		#if emscripten
+		untyped __cpp__("emscripten_runtime_keepalive_push()");
+		#end
 		// A 2 × 2 opaque red RGBA frame.
 		var pixels = Bytes.alloc(16);
 		for (i in 0...4) {
@@ -32,7 +38,26 @@ class Main {
 		var size = frame.allocationSize(options);
 		check(size == 16, "frame takes 16 bytes");
 		var copy = Bytes.alloc(Int64.toInt(size));
-		var layouts = frame.copyTo(copy, options).await();
+		final copied = frame.copyTo(copy, options);
+		if (!copied.isReady())
+			throw "CPU video copy did not resolve synchronously";
+		finish(frame, pixels, options, copy, copied.await());
+	}
+
+	static function fail(error:Dynamic):Void {
+		Sys.println('media check failed: ${Std.string(error)}');
+		leave(1);
+	}
+
+	public static function leave(code:Int):Void {
+		#if emscripten
+		untyped __cpp__("emscripten_runtime_keepalive_pop(); emscripten_force_exit({0})", code);
+		#else
+		hxn.Loop.exit(code);
+		#end
+	}
+
+	static function finish(frame:VideoFrame, pixels:Bytes, options:VideoFrameCopyToOptions, copy:Bytes, layouts:PlaneLayouts):Void {
 		options.close();
 		check(layouts.count() == 1 && layouts.stride(0) == 8, "copy has one plane of 8-byte rows");
 		check(copy.compare(pixels) == 0, "copy matches the frame");
@@ -73,5 +98,8 @@ class Main {
 		filtered.close();
 		audio.close();
 		eq.close();
+		#if (wasm || emscripten)
+		DecoderCheck.start();
+		#end
 	}
 }

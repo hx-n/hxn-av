@@ -62,8 +62,8 @@ checksum = "ed5909b6e89a2db4456e54cd5f673791d7eca6732202bbf2a9cc504fe2f9b84a"
 
 [[package]]
 name = "hxn"
-version = "0.3.5"
-source = "git+https://github.com/hx-n/hxn.git?tag=v0.3.5#aafa0d817fd61ecda39b3fee03e941bdb5329ff4"
+version = "0.3.7"
+source = "git+https://github.com/hx-n/hxn.git?tag=v0.3.7#841a6d19c9dbc5011f17e28eca6fd3511699ce59"
 dependencies = [
  "hxn-abi",
  "hxn-macros",
@@ -71,16 +71,20 @@ dependencies = [
 
 [[package]]
 name = "hxn-abi"
-version = "0.3.5"
-source = "git+https://github.com/hx-n/hxn.git?tag=v0.3.5#aafa0d817fd61ecda39b3fee03e941bdb5329ff4"
+version = "0.3.7"
+source = "git+https://github.com/hx-n/hxn.git?tag=v0.3.7#841a6d19c9dbc5011f17e28eca6fd3511699ce59"
 
 [[package]]
 name = "hxn-av"
 version = "0.2.0"
 dependencies = [
+ "cc",
  "hxn",
  "hxn-future",
- "x_idl 0.1.0 (git+https://github.com/rayzor-blade/x-idl.git?rev=780f07f9afde0b422fac24fc346b70dcab1516bb)",
+ "quote",
+ "serde_json",
+ "syn 2.0.119",
+ "x_idl 0.1.0 (git+https://github.com/rayzor-blade/x-idl.git?rev=1055cfd7e4925ebc7028175051dafb67d0b9dbe1)",
  "xavi-backend",
  "xavi-bindgen",
  "xavi-core",
@@ -88,8 +92,8 @@ dependencies = [
 
 [[package]]
 name = "hxn-future"
-version = "0.3.5"
-source = "git+https://github.com/hx-n/hxn.git?tag=v0.3.5#aafa0d817fd61ecda39b3fee03e941bdb5329ff4"
+version = "0.3.7"
+source = "git+https://github.com/hx-n/hxn.git?tag=v0.3.7#841a6d19c9dbc5011f17e28eca6fd3511699ce59"
 dependencies = [
  "hxn-abi",
  "krio-core",
@@ -99,8 +103,8 @@ dependencies = [
 
 [[package]]
 name = "hxn-macros"
-version = "0.3.5"
-source = "git+https://github.com/hx-n/hxn.git?tag=v0.3.5#aafa0d817fd61ecda39b3fee03e941bdb5329ff4"
+version = "0.3.7"
+source = "git+https://github.com/hx-n/hxn.git?tag=v0.3.7#841a6d19c9dbc5011f17e28eca6fd3511699ce59"
 
 [[package]]
 name = "indexmap"
@@ -603,7 +607,7 @@ dependencies = [
 [[package]]
 name = "x_idl"
 version = "0.1.0"
-source = "git+https://github.com/rayzor-blade/x-idl.git?rev=753610fd220dcfb5cce358e9418eadc48cb4562d#753610fd220dcfb5cce358e9418eadc48cb4562d"
+source = "git+https://github.com/rayzor-blade/x-idl.git?rev=1055cfd7e4925ebc7028175051dafb67d0b9dbe1#1055cfd7e4925ebc7028175051dafb67d0b9dbe1"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -614,7 +618,7 @@ dependencies = [
 [[package]]
 name = "x_idl"
 version = "0.1.0"
-source = "git+https://github.com/rayzor-blade/x-idl.git?rev=780f07f9afde0b422fac24fc346b70dcab1516bb#780f07f9afde0b422fac24fc346b70dcab1516bb"
+source = "git+https://github.com/rayzor-blade/x-idl.git?rev=753610fd220dcfb5cce358e9418eadc48cb4562d#753610fd220dcfb5cce358e9418eadc48cb4562d"
 dependencies = [
  "proc-macro2",
  "quote",
