@@ -1,11 +1,11 @@
 {
   "name": "hxn-av",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Audio and video for Haxe: media data, codecs, equalizer, MP4 and file playback",
   "url": "https://github.com/hx-n/hxn-av",
   "license": "Apache",
   "tags": ["audio", "video", "haxe", "media", "mp4", "playback", "equalizer", "codec", "hashlink", "ash", "hxcpp", "cppia", "native", "cross", "wasm"],
   "contributors": ["darmie", "rayzor"],
-  "releasenote": "Browser PCM operations and bounded AAC-LC decoding on Ash wasm and both hxcpp wasm modes.",
-  "dependencies": { "hxn": "0.3.7" }
+  "releasenote": "Shared logging, licensed xavi dependency notices, browser PCM operations and bounded AAC-LC decoding on Ash wasm and both hxcpp wasm modes.",
+  "dependencies": { "hxn": "0.3.9" }
 }

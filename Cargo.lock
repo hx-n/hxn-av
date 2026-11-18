@@ -62,8 +62,8 @@ checksum = "ed5909b6e89a2db4456e54cd5f673791d7eca6732202bbf2a9cc504fe2f9b84a"
 
 [[package]]
 name = "hxn"
-version = "0.3.7"
-source = "git+https://github.com/hx-n/hxn.git?tag=v0.3.7#841a6d19c9dbc5011f17e28eca6fd3511699ce59"
+version = "0.3.9"
+source = "git+https://github.com/hx-n/hxn.git?tag=v0.3.9#562fc8b8bd214c7339baeea92c7aa7c0b7bffc9b"
 dependencies = [
  "hxn-abi",
  "hxn-macros",
@@ -71,12 +71,12 @@ dependencies = [
 
 [[package]]
 name = "hxn-abi"
-version = "0.3.7"
-source = "git+https://github.com/hx-n/hxn.git?tag=v0.3.7#841a6d19c9dbc5011f17e28eca6fd3511699ce59"
+version = "0.3.9"
+source = "git+https://github.com/hx-n/hxn.git?tag=v0.3.9#562fc8b8bd214c7339baeea92c7aa7c0b7bffc9b"
 
 [[package]]
 name = "hxn-av"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "cc",
  "hxn",
@@ -92,8 +92,8 @@ dependencies = [
 
 [[package]]
 name = "hxn-future"
-version = "0.3.7"
-source = "git+https://github.com/hx-n/hxn.git?tag=v0.3.7#841a6d19c9dbc5011f17e28eca6fd3511699ce59"
+version = "0.3.9"
+source = "git+https://github.com/hx-n/hxn.git?tag=v0.3.9#562fc8b8bd214c7339baeea92c7aa7c0b7bffc9b"
 dependencies = [
  "hxn-abi",
  "krio-core",
@@ -103,8 +103,8 @@ dependencies = [
 
 [[package]]
 name = "hxn-macros"
-version = "0.3.7"
-source = "git+https://github.com/hx-n/hxn.git?tag=v0.3.7#841a6d19c9dbc5011f17e28eca6fd3511699ce59"
+version = "0.3.9"
+source = "git+https://github.com/hx-n/hxn.git?tag=v0.3.9#562fc8b8bd214c7339baeea92c7aa7c0b7bffc9b"
 
 [[package]]
 name = "indexmap"
@@ -629,7 +629,7 @@ dependencies = [
 [[package]]
 name = "xavi-backend"
 version = "0.1.0"
-source = "git+https://github.com/rayzor-blade/xavi.git?rev=ec2145942e70ef551bc1eef58e117e7ecdad6cb5#ec2145942e70ef551bc1eef58e117e7ecdad6cb5"
+source = "git+https://github.com/rayzor-blade/xavi.git?rev=380c6bdb21d4f5f294fdb6756e32e3c5a28872ab#380c6bdb21d4f5f294fdb6756e32e3c5a28872ab"
 dependencies = [
  "mp4",
  "xavi-core",
@@ -639,7 +639,7 @@ dependencies = [
 [[package]]
 name = "xavi-bindgen"
 version = "0.1.0"
-source = "git+https://github.com/rayzor-blade/xavi.git?rev=ec2145942e70ef551bc1eef58e117e7ecdad6cb5#ec2145942e70ef551bc1eef58e117e7ecdad6cb5"
+source = "git+https://github.com/rayzor-blade/xavi.git?rev=380c6bdb21d4f5f294fdb6756e32e3c5a28872ab#380c6bdb21d4f5f294fdb6756e32e3c5a28872ab"
 dependencies = [
  "x_idl 0.1.0 (git+https://github.com/rayzor-blade/x-idl.git?rev=753610fd220dcfb5cce358e9418eadc48cb4562d)",
 ]
@@ -647,12 +647,12 @@ dependencies = [
 [[package]]
 name = "xavi-core"
 version = "0.1.0"
-source = "git+https://github.com/rayzor-blade/xavi.git?rev=ec2145942e70ef551bc1eef58e117e7ecdad6cb5#ec2145942e70ef551bc1eef58e117e7ecdad6cb5"
+source = "git+https://github.com/rayzor-blade/xavi.git?rev=380c6bdb21d4f5f294fdb6756e32e3c5a28872ab#380c6bdb21d4f5f294fdb6756e32e3c5a28872ab"
 
 [[package]]
 name = "xavi-platform"
 version = "0.1.0"
-source = "git+https://github.com/rayzor-blade/xavi.git?rev=ec2145942e70ef551bc1eef58e117e7ecdad6cb5#ec2145942e70ef551bc1eef58e117e7ecdad6cb5"
+source = "git+https://github.com/rayzor-blade/xavi.git?rev=380c6bdb21d4f5f294fdb6756e32e3c5a28872ab#380c6bdb21d4f5f294fdb6756e32e3c5a28872ab"
 dependencies = [
  "cc",
  "libloading",

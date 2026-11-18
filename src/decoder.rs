@@ -40,6 +40,7 @@ fn exact(value: i64) -> Result<i64, String> {
     }
 }
 pub fn audio_decoder_create(items: i32, bytes: i64, config: i32) -> i32 {
+    hxn::log::debug!(target: "hxn.av", "opening a browser audio decoder with {items} queued items and {bytes} bytes");
     call(|| {
         if !(1..=128).contains(&items) || !(16_384..=16 * 1024 * 1024).contains(&bytes) {
             return Err("browser decoder limits require 1..=128 items and 16 KiB..=16 MiB".into());

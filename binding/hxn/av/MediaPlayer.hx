@@ -5,9 +5,10 @@ package hxn.av;
 	A native file player with audio output and one polled video frame.
 	Drive on the main event-loop thread. Close each frame after uploading it.
 **/
+@:build(hxn.Log.bind())
 class MediaPlayer {
 	@:noCompletion public var hxnRaw:hxn.Handle;
-	@:noCompletion static final hxnMemory = HxnXaviMemory.meter;
+	@:keep @:noCompletion static final hxnMemory = HxnXaviMemory.meter;
 
 	/** An object for a value the library returned. **/
 	@:noCompletion public static function hxnAdopt(hxnRaw:hxn.Handle):MediaPlayer {

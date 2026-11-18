@@ -31,6 +31,8 @@ package hxn.av;
 @:noCompletion class HxnXaviNative {
 	static function memory_held():Float;
 	static function memory_wanted():Bool;
+	static function log_level(level:Int):Void;
+	public static function log_take():Null<haxe.io.Bytes>;
 	static function audio_data_init_new(format:Int, sampleRate:Float, numberOfFrames:haxe.Int64, numberOfChannels:haxe.Int64, timestamp:haxe.Int64, data:haxe.io.Bytes):hxn.Handle;
 	static function audio_data_init_drop(self:hxn.Handle):Void;
 	static function audio_data_copy_to_options_frame_offset(self:hxn.Handle, value:haxe.Int64):Void;

@@ -1,6 +1,6 @@
 [package]
 name = "hxn-av"
-version = "0.2.0"
+version = "0.2.1"
 edition = "2024"
 description = "Audio and video for Haxe: media data, codecs, equalizer, MP4 and file playback"
 repository = "https://github.com/hx-n/hxn-av"
@@ -16,7 +16,7 @@ name = "hxn_av"
 library = "xavi"
 haxelib = "hxn-av"
 contributors = ["darmie", "rayzor"]
-releasenote = "Browser PCM operations and bounded AAC-LC decoding on Ash wasm and both hxcpp wasm modes."
+releasenote = "Shared logging, licensed xavi dependency notices, browser PCM operations and bounded AAC-LC decoding on Ash wasm and both hxcpp wasm modes."
 # The media check `hxn check` and `hxn run` build.
 haxe = "examples/check"
 init = ["hxn.av.Init.register()"]
@@ -30,14 +30,14 @@ cc = "1"
 quote = "1"
 syn = { version = "2", features = ["full"] }
 x_idl = { git = "https://github.com/rayzor-blade/x-idl.git", rev = "1055cfd7e4925ebc7028175051dafb67d0b9dbe1" }
-xavi-backend = { git = "https://github.com/rayzor-blade/xavi.git", rev = "ec2145942e70ef551bc1eef58e117e7ecdad6cb5" }
-xavi-bindgen = { git = "https://github.com/rayzor-blade/xavi.git", rev = "ec2145942e70ef551bc1eef58e117e7ecdad6cb5" }
+xavi-backend = { git = "https://github.com/rayzor-blade/xavi.git", rev = "380c6bdb21d4f5f294fdb6756e32e3c5a28872ab" }
+xavi-bindgen = { git = "https://github.com/rayzor-blade/xavi.git", rev = "380c6bdb21d4f5f294fdb6756e32e3c5a28872ab" }
 
 [dependencies]
-hxn = { git = "https://github.com/hx-n/hxn.git", tag = "v0.3.7" }
-hxn-future = { git = "https://github.com/hx-n/hxn.git", tag = "v0.3.7" }
-xavi-backend = { git = "https://github.com/rayzor-blade/xavi.git", rev = "ec2145942e70ef551bc1eef58e117e7ecdad6cb5" }
-xavi-core = { git = "https://github.com/rayzor-blade/xavi.git", rev = "ec2145942e70ef551bc1eef58e117e7ecdad6cb5" }
+hxn = { git = "https://github.com/hx-n/hxn.git", tag = "v0.3.9" }
+hxn-future = { git = "https://github.com/hx-n/hxn.git", tag = "v0.3.9" }
+xavi-backend = { git = "https://github.com/rayzor-blade/xavi.git", rev = "380c6bdb21d4f5f294fdb6756e32e3c5a28872ab" }
+xavi-core = { git = "https://github.com/rayzor-blade/xavi.git", rev = "380c6bdb21d4f5f294fdb6756e32e3c5a28872ab" }
 
 [target.'cfg(target_family = "wasm")'.dependencies]
 serde_json = "1"

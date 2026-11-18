@@ -17,7 +17,7 @@
   metadata from target packages. CI and releases use matching hxn tool/crate
   versions. Test the installed haxelib as well as source builds.
 - Update design, skills and README with supported API/workflow changes.
-  Keep measurements/status in the parent hxn git-bug tracker. Format Haxe
+  Keep measurements/status in this repository's git-bug tracker. Format Haxe
   and Rust before a commit; commit/push only when asked.
 
 ## Redistribution
@@ -26,3 +26,10 @@ Ship `third-party/` with binary packages. Refresh its pinned dependency
 license and notice inventory after changing Cargo manifests or the lock file,
 and run `python3 scripts/third_party_notices.py --check` before packaging.
 Keep documentation links in skills absolute HTTPS URLs.
+
+## Logging
+
+Use core `hxn::log` and `hxn.Log` with a stable library target. Applications
+own filtering and sinks; libraries do not configure them. Keep rendering and
+real-time callbacks free of logging. Generated bindings pull native diagnostics
+after calls return; manual frame loops drain at `hxn.Loop.sync()`.

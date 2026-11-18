@@ -7,5 +7,6 @@ package hxn.av;
 	a delivery does.
 **/
 class HxnXaviMemory {
+	@:keep static final logging = hxn.Log.attach(level -> HxnXaviNative.log_level(level), () -> HxnXaviNative.log_take());
 	public static final meter = new hxn.Gc.Meter(() -> HxnXaviNative.memory_held(), () -> HxnXaviNative.memory_wanted());
 }

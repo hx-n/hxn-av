@@ -14,7 +14,14 @@ mod decoder;
 
 #[allow(dead_code, clippy::all)]
 mod native {
-    include!(concat!(env!("OUT_DIR"), "/xavi_backend/native.rs"));
+    mod platform {
+        include!(concat!(env!("OUT_DIR"), "/xavi_backend/native.rs"));
+    }
+    pub use platform::*;
+    pub fn audio_decoder_create(items: i32, bytes: i64, config: i32) -> i32 {
+        hxn::log::debug!(target: "hxn.av", "opening an audio decoder with {items} queued items and {bytes} bytes");
+        platform::audio_decoder_create(items, bytes, config)
+    }
 }
 
 #[cfg(not(target_family = "wasm"))]

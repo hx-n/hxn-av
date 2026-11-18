@@ -2,9 +2,10 @@
 package hxn.av;
 
 /** Destination layouts, in pixel-format plane order. Close after reading. **/
+@:build(hxn.Log.bind())
 class PlaneLayouts {
 	@:noCompletion public var hxnRaw:hxn.Handle;
-	@:noCompletion static final hxnMemory = HxnXaviMemory.meter;
+	@:keep @:noCompletion static final hxnMemory = HxnXaviMemory.meter;
 
 	/** An object for a value the library returned. **/
 	@:noCompletion public static function hxnAdopt(hxnRaw:hxn.Handle):PlaneLayouts {

@@ -8,14 +8,6 @@ and do not change the license of this project.
 
 When redistributing binaries, retain the applicable notices and license texts.
 
-**Unresolved license:** xavi-backend 0.1.0 has no declared license at its pinned source revision. Its manifest is retained for provenance, not as a license grant. Resolve upstream terms before releasing this distribution.
-
-**Unresolved license:** xavi-bindgen 0.1.0 has no declared license at its pinned source revision. Its manifest is retained for provenance, not as a license grant. Resolve upstream terms before releasing this distribution.
-
-**Unresolved license:** xavi-core 0.1.0 has no declared license at its pinned source revision. Its manifest is retained for provenance, not as a license grant. Resolve upstream terms before releasing this distribution.
-
-**Unresolved license:** xavi-platform 0.1.0 has no declared license at its pinned source revision. Its manifest is retained for provenance, not as a license grant. Resolve upstream terms before releasing this distribution.
-
 | Dependency | Declared license | License and notices |
 |---|---|---|
 | autocfg 1.5.1 | Apache-2.0 OR MIT | [LICENSE-APACHE](licenses/autocfg-1.5.1/LICENSE-APACHE), [LICENSE-MIT](licenses/autocfg-1.5.1/LICENSE-MIT) |
@@ -28,10 +20,10 @@ When redistributing binaries, retain the applicable notices and license texts.
 | find-msvc-tools 0.1.15 | MIT OR Apache-2.0 | [LICENSE-APACHE](licenses/find-msvc-tools-0.1.15/LICENSE-APACHE), [LICENSE-MIT](licenses/find-msvc-tools-0.1.15/LICENSE-MIT) |
 | hashbrown 0.17.1 | MIT OR Apache-2.0 | [LICENSE-APACHE](licenses/hashbrown-0.17.1/LICENSE-APACHE), [LICENSE-MIT](licenses/hashbrown-0.17.1/LICENSE-MIT) |
 | hl_abi 0.1.0 | MIT | [LICENSE-MIT](licenses/hl_abi-0.1.0/LICENSE-MIT), [UPSTREAM-MANIFEST.txt](licenses/hl_abi-0.1.0/UPSTREAM-MANIFEST.txt) |
-| hxn 0.3.7 | Apache-2.0 | [LICENSE](licenses/hxn-0.3.7/LICENSE) |
-| hxn-abi 0.3.7 | Apache-2.0 | [LICENSE](licenses/hxn-abi-0.3.7/LICENSE) |
-| hxn-future 0.3.7 | Apache-2.0 | [LICENSE](licenses/hxn-future-0.3.7/LICENSE) |
-| hxn-macros 0.3.7 | Apache-2.0 | [LICENSE](licenses/hxn-macros-0.3.7/LICENSE) |
+| hxn 0.3.9 | Apache-2.0 | [LICENSE](licenses/hxn-0.3.9/LICENSE) |
+| hxn-abi 0.3.9 | Apache-2.0 | [LICENSE](licenses/hxn-abi-0.3.9/LICENSE) |
+| hxn-future 0.3.9 | Apache-2.0 | [LICENSE](licenses/hxn-future-0.3.9/LICENSE) |
+| hxn-macros 0.3.9 | Apache-2.0 | [LICENSE](licenses/hxn-macros-0.3.9/LICENSE) |
 | indexmap 2.14.2 | Apache-2.0 OR MIT | [LICENSE-APACHE](licenses/indexmap-2.14.2/LICENSE-APACHE), [LICENSE-MIT](licenses/indexmap-2.14.2/LICENSE-MIT) |
 | itoa 1.0.19 | MIT OR Apache-2.0 | [LICENSE-APACHE](licenses/itoa-1.0.19/LICENSE-APACHE), [LICENSE-MIT](licenses/itoa-1.0.19/LICENSE-MIT) |
 | jni-sys 0.3.1 | MIT OR Apache-2.0 | [LICENSE-APACHE](licenses/jni-sys-0.3.1/LICENSE-APACHE), [LICENSE-MIT](licenses/jni-sys-0.3.1/LICENSE-MIT) |
@@ -87,8 +79,8 @@ When redistributing binaries, retain the applicable notices and license texts.
 | winnow 1.0.5 | MIT | [LICENSE-MIT](licenses/winnow-1.0.5/LICENSE-MIT) |
 | x_idl 0.1.0 | MIT | [LICENSE](licenses/x_idl-0.1.0-8396bc9c/LICENSE) |
 | x_idl 0.1.0 | MIT | [LICENSE](licenses/x_idl-0.1.0-3dce1e53/LICENSE) |
-| xavi-backend 0.1.0 | NOASSERTION | [UPSTREAM-MANIFEST.txt](licenses/xavi-backend-0.1.0/UPSTREAM-MANIFEST.txt) |
-| xavi-bindgen 0.1.0 | NOASSERTION | [UPSTREAM-MANIFEST.txt](licenses/xavi-bindgen-0.1.0/UPSTREAM-MANIFEST.txt) |
-| xavi-core 0.1.0 | NOASSERTION | [UPSTREAM-MANIFEST.txt](licenses/xavi-core-0.1.0/UPSTREAM-MANIFEST.txt) |
-| xavi-platform 0.1.0 | NOASSERTION | [UPSTREAM-MANIFEST.txt](licenses/xavi-platform-0.1.0/UPSTREAM-MANIFEST.txt) |
+| xavi-backend 0.1.0 | Apache-2.0 | [LICENSE](licenses/xavi-backend-0.1.0/LICENSE) |
+| xavi-bindgen 0.1.0 | Apache-2.0 | [LICENSE](licenses/xavi-bindgen-0.1.0/LICENSE) |
+| xavi-core 0.1.0 | Apache-2.0 | [LICENSE](licenses/xavi-core-0.1.0/LICENSE) |
+| xavi-platform 0.1.0 | Apache-2.0 | [LICENSE](licenses/xavi-platform-0.1.0/LICENSE) |
 | zmij 1.0.23 | MIT | [LICENSE-MIT](licenses/zmij-1.0.23/LICENSE-MIT) |
