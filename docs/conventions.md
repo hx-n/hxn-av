@@ -19,3 +19,10 @@
 - Update design, skills and README with supported API/workflow changes.
   Keep measurements/status in the parent hxn git-bug tracker. Format Haxe
   and Rust before a commit; commit/push only when asked.
+
+## Redistribution
+
+Ship `third-party/` with binary packages. Refresh its pinned dependency
+license and notice inventory after changing Cargo manifests or the lock file,
+and run `python3 scripts/third_party_notices.py --check` before packaging.
+Keep documentation links in skills absolute HTTPS URLs.

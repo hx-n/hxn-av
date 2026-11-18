@@ -172,3 +172,13 @@ agents. The haxelib includes it.
 ## License
 
 Apache-2.0. x-idl, which writes the binding, is MIT.
+
+## Third-party notices
+
+Dependency licenses and redistribution notices are in
+[third-party/NOTICES.md](https://github.com/hx-n/hxn-av/blob/main/third-party/NOTICES.md). Retain the applicable
+notices when redistributing binaries.
+
+The pinned upstream xavi crates do not declare a license. Their manifests
+are recorded in the inventory; release packaging fails until upstream terms
+are supplied and the notices are refreshed.
